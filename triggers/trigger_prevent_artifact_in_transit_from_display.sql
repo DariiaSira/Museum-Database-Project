@@ -1,5 +1,5 @@
 -- Create a trigger to call a function before inserting into the "Displayed_Artifacts" table
-CREATE TRIGGER trigger_prevent_artifact_in_transit_from_display
+CREATE OR REPLACE TRIGGER trigger_prevent_artifact_in_transit_from_display
 BEFORE INSERT ON "Displayed_Artifacts"
 FOR EACH ROW EXECUTE FUNCTION prevent_artifact_in_transit_from_display();
 

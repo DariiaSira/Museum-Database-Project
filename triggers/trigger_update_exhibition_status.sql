@@ -1,5 +1,5 @@
 -- Create a trigger to call a function when inserting and updating records
-CREATE TRIGGER trigger_update_exhibition_status
+CREATE OR REPLACE TRIGGER trigger_update_exhibition_status
 BEFORE INSERT OR UPDATE ON "Exhibitions"
 FOR EACH ROW EXECUTE FUNCTION update_exhibition_status();
 

@@ -1,5 +1,5 @@
 -- Create a trigger to call a function before inserting into the "Displayed_Artifacts" table
-CREATE TRIGGER trigger_check_room_insertion
+CREATE OR REPLACE TRIGGER trigger_check_room_insertion
 BEFORE INSERT ON "Displayed_Artifacts"
 FOR EACH ROW EXECUTE FUNCTION check_room_insertion();
 

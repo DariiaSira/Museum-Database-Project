@@ -3,12 +3,12 @@
 CREATE OR REPLACE FUNCTION update_exhibition_status()
 RETURNS TRIGGER AS $$
 BEGIN
-    IF NEW.start_date > CURRENT_TIMESTAMP THEN
-        NEW.exhibition_status := 'preparation';
+    IF NEW.start_date < CURRENT_TIMESTAMP AND NEW.end_date > CURRENT_TIMESTAMP THEN
+        NEW.exhibition_status := 'active';
     ELSIF NEW.end_date < CURRENT_TIMESTAMP THEN
         NEW.exhibition_status := 'passed';
     ELSE
-        NEW.exhibition_status := 'active';
+        NEW.exhibition_status := 'preparation';
     END IF;
     RETURN NEW;
 END;
